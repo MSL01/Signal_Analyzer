@@ -299,17 +299,12 @@ class SignalAnalyzer(QMainWindow):
         self.window_type.addItems(["Rectangular", "Hanning", "Hamming", "Blackman", "Bartlett", "Kaiser"])
         fft_grid.addWidget(self.window_type, 1, 1, 1, 2)
 
-        # Kaiser beta parameter (only visible for Kaiser window)
-        fft_grid.addWidget(QLabel("Kaiser Beta:"), 2, 0)
-        self.kaiser_beta = QLineEdit('14')
-        fft_grid.addWidget(self.kaiser_beta, 2, 1, 1, 2)
-        self.kaiser_beta_label = QLabel("Beta:")
+        # Kaiser beta parameter (pre-defined, will be shown/hidden)
+        self.kaiser_beta_label = QLabel("Kaiser Beta:")
         self.kaiser_beta_input = QLineEdit('14')
         fft_grid.addWidget(self.kaiser_beta_label, 2, 0)
         fft_grid.addWidget(self.kaiser_beta_input, 2, 1)
         fft_grid.addWidget(QLabel(""), 2, 2)
-        self.kaiser_beta_label.setVisible(False)
-        self.kaiser_beta_input.setVisible(False)
 
         # Zero padding
         fft_grid.addWidget(QLabel("Zero Padding:"), 3, 0)
@@ -317,17 +312,12 @@ class SignalAnalyzer(QMainWindow):
         self.zero_padding.addItems(["None", "2x", "4x", "8x", "Custom"])
         fft_grid.addWidget(self.zero_padding, 3, 1, 1, 2)
 
-        # Custom zero padding factor
-        fft_grid.addWidget(QLabel("Custom Padding:"), 4, 0)
-        self.custom_padding = QLineEdit('1024')
-        fft_grid.addWidget(self.custom_padding, 4, 1, 1, 2)
+        # Custom zero padding factor (pre-defined)
         self.custom_padding_label = QLabel("Custom Padding:")
         self.custom_padding_input = QLineEdit('1024')
         fft_grid.addWidget(self.custom_padding_label, 4, 0)
         fft_grid.addWidget(self.custom_padding_input, 4, 1)
         fft_grid.addWidget(QLabel(""), 4, 2)
-        self.custom_padding_label.setVisible(False)
-        self.custom_padding_input.setVisible(False)
 
         # Smoothing options
         fft_grid.addWidget(QLabel("Smoothing:"), 5, 0)
@@ -335,17 +325,12 @@ class SignalAnalyzer(QMainWindow):
         self.smoothing_type.addItems(["None", "Moving Average", "Savitzky-Golay"])
         fft_grid.addWidget(self.smoothing_type, 5, 1, 1, 2)
 
-        # Smoothing window size
-        fft_grid.addWidget(QLabel("Smoothing Window:"), 6, 0)
-        self.smoothing_window = QLineEdit('11')
-        fft_grid.addWidget(self.smoothing_window, 6, 1, 1, 2)
-        self.smoothing_window_label = QLabel("Window Size:")
+        # Smoothing window size (pre-defined)
+        self.smoothing_window_label = QLabel("Smoothing Window:")
         self.smoothing_window_input = QLineEdit('11')
         fft_grid.addWidget(self.smoothing_window_label, 6, 0)
         fft_grid.addWidget(self.smoothing_window_input, 6, 1)
         fft_grid.addWidget(QLabel(""), 6, 2)
-        self.smoothing_window_label.setVisible(False)
-        self.smoothing_window_input.setVisible(False)
 
         # Frequency range
         fft_grid.addWidget(QLabel("Freq Range Min:"), 7, 0)
